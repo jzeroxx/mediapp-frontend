@@ -13,6 +13,7 @@ import { MedicoComponent } from './medico/medico.component'
 import { Not403Component } from './not403/not403.component';
 import { PacienteEdicionComponent } from './paciente/paciente-edicion/paciente-edicion.component';
 import { PacienteComponent } from './paciente/paciente.component';
+import { PerfilComponent } from './perfil/perfil.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { WizardComponent } from './wizard/wizard.component';
 
@@ -36,6 +37,7 @@ export const routes: Routes = [
             { path: 'edicion/:id', component: EspecialidadEdicionComponent }
         ], canActivate: [GuardService]
     },
+    { path: 'perfil', component: PerfilComponent, canActivate: [GuardService] },
     { path: 'medico', component: MedicoComponent, canActivate: [GuardService] },
     { path: 'consulta', component: ConsultaComponent, canActivate: [GuardService] },
     { path: 'consulta-wizard', component: WizardComponent, canActivate: [GuardService] },
