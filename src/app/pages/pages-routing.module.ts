@@ -15,6 +15,7 @@ import { PacienteEdicionComponent } from './paciente/paciente-edicion/paciente-e
 import { PacienteComponent } from './paciente/paciente.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ReporteComponent } from './reporte/reporte.component';
+import { SignosvitalesComponent } from './signosvitales/signosvitales.component';
 import { WizardComponent } from './wizard/wizard.component';
 
 export const routes: Routes = [
@@ -37,6 +38,11 @@ export const routes: Routes = [
             { path: 'edicion/:id', component: EspecialidadEdicionComponent }
         ], canActivate: [GuardService]
     },
+    {
+        path: 'signos-vitales', component: SignosvitalesComponent, children: [
+
+        ]
+    },
     { path: 'perfil', component: PerfilComponent, canActivate: [GuardService] },
     { path: 'medico', component: MedicoComponent, canActivate: [GuardService] },
     { path: 'consulta', component: ConsultaComponent, canActivate: [GuardService] },
@@ -44,6 +50,7 @@ export const routes: Routes = [
     { path: 'consulta-especial', component: ConsultaEspecialComponent, canActivate: [GuardService] },
     { path: 'buscar', component: BuscarComponent, canActivate: [GuardService] },
     { path: 'reporte', component: ReporteComponent, canActivate: [GuardService] },
+
     { path: 'not-403', component: Not403Component },
 ]
 

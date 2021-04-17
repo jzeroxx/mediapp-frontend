@@ -27,6 +27,7 @@ import { Not404Component } from './not404/not404.component';
 import { RecuperarComponent } from './login/recuperar/recuperar.component';
 import { TokenComponent } from './login/recuperar/token/token.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { SignosvitalesComponent } from './signosvitales/signosvitales.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { PerfilComponent } from './perfil/perfil.component';
         Not404Component,
         RecuperarComponent,
         TokenComponent,
-        PerfilComponent        
+        PerfilComponent,
+        SignosvitalesComponent        
     ],
     providers: [],
 })
