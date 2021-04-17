@@ -17,6 +17,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { SignosvitalesComponent } from './signosvitales/signosvitales.component';
 import { WizardComponent } from './wizard/wizard.component';
+import { SignosvitalesEdicionComponent } from './signosvitales/signosvitales-edicion/signosvitales-edicion.component';
 
 export const routes: Routes = [
     { path: 'inicio', component: InicioComponent, canActivate: [GuardService] },
@@ -40,8 +41,9 @@ export const routes: Routes = [
     },
     {
         path: 'signos-vitales', component: SignosvitalesComponent, children: [
-
-        ]
+          { path: 'nuevo', component: SignosvitalesEdicionComponent },
+          { path: 'edicion/:id', component: SignosvitalesEdicionComponent }
+        ], canActivate: [GuardService]
     },
     { path: 'perfil', component: PerfilComponent, canActivate: [GuardService] },
     { path: 'medico', component: MedicoComponent, canActivate: [GuardService] },

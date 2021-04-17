@@ -7,12 +7,12 @@
         </mat-form-field>
     </div>
 
-    <mat-form-field class="example-full-width">            
-        <input matInput placeholder="Nombres" minlength="3" required formControlName="nombres">             
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombres" minlength="3" required formControlName="nombres">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">        
-        <input matInput placeholder="Apellidos" required formControlName="apellidos">           
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Apellidos" required formControlName="apellidos">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
@@ -31,7 +31,7 @@
         <mat-icon>done</mat-icon>
         <span>Aceptar</span>
     </button>
-    <button mat-raised-button color="accent" routerLink='/paciente' type="button">
+    <button mat-raised-button color="accent" (click)="cancelarOperacion()" type="button">
         <mat-icon>close</mat-icon>
         <span>Cancelar</span>
     </button>

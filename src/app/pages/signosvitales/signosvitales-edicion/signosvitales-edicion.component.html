@@ -1,0 +1,59 @@
+<mat-toolbar>Signos Vitales</mat-toolbar>
+<!-- No olvidar agregar ReactiveFormsModule en App.module.ts, util para trabajar con formularios-->
+<form class="example-container" [formGroup]="form" #frmSignosVitales="ngForm" (ngSubmit)="operar()">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="idSignosVitales">
+        </mat-form-field>
+    </div>
+
+    <mat-grid-list cols="4" rowHeight="100px">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+            <mat-form-field class="paciente-input">
+                <input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente" [formControl]="myControlPaciente" formControlName="paciente">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <button mat-raised-button color="accent" type="button" (click)="agregarPaciente()">
+            <mat-icon>account_box</mat-icon>
+            <span>Nuevo paciente</span>
+          </button>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+    <mat-autocomplete #autoPaciente="matAutocomplete" [displayWith]="mostrarPaciente">
+        <mat-option *ngFor="let p of pacientesFiltrados$ | async" [value]="p">
+            {{ p.nombres }} {{p.apellidos}}
+        </mat-option>
+    </mat-autocomplete>
+
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha" formControlName="fecha" [(ngModel)]="fechaSeleccionada">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Temperatura" required formControlName="temperatura">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Pulso" required formControlName="pulso">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Ritmo Cardiaco" required formControlName="ritmoCardiaco">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmSignosVitales.invalid">
+      <mat-icon>done</mat-icon>
+      <span>Aceptar</span>
+  </button>
+    <button mat-raised-button color="accent" routerLink='/pages/signos-vitales' type="button">
+      <mat-icon>close</mat-icon>
+      <span>Cancelar</span>
+  </button>
+
+</form>

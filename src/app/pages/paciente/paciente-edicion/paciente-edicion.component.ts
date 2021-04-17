@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Paciente } from 'src/app/_model/paciente';
 import { PacienteService } from 'src/app/_service/paciente.service';
 import { switchMap } from 'rxjs/operators';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SignosvitalesEdicionComponent } from '../../signosvitales/signosvitales-edicion/signosvitales-edicion.component';
 
 @Component({
   selector: 'app-paciente-edicion',
@@ -11,6 +13,11 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./paciente-edicion.component.css']
 })
 export class PacienteEdicionComponent implements OnInit {
+
+  @Input()
+  isPacienteDialog: boolean;
+  @Input()
+  dialogRef: MatDialogRef<SignosvitalesEdicionComponent>
 
   form: FormGroup;
   id: number;
@@ -23,6 +30,7 @@ export class PacienteEdicionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.form = new FormGroup({
       'id': new FormControl(0),
       'nombres': new FormControl(''),
@@ -68,7 +76,11 @@ export class PacienteEdicionComponent implements OnInit {
       });
     }
 
-    this.router.navigate(['paciente']);
+    if(this.isPacienteDialog){
+      this.dialogRef.close();
+    }else{
+      this.router.navigate(['pages/paciente']);
+    }
 
   }
 
@@ -84,6 +96,14 @@ export class PacienteEdicionComponent implements OnInit {
           'direccion': new FormControl(data.direccion),
         });
       });
+    }
+  }
+
+  cancelarOperacion(){
+    if(this.isPacienteDialog){
+      this.dialogRef.close();
+    }else{
+      this.router.navigate(['pages/paciente']);
     }
   }
 

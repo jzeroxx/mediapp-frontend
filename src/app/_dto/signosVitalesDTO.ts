@@ -1,11 +1,8 @@
-import { Paciente } from "./paciente";
-
-export class Signosvitales{
+export class SignosVitalesDTO {
   idSignosVitales: number;
-  paciente : Paciente;
+  nombresCompletos : string;
   fecha: string;
   temperatura: string;
   pulso: string;
   ritmoCardiaco: string;
-
 }

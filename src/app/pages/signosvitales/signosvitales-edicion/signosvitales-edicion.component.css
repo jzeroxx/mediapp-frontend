@@ -1,0 +1,21 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container>* {
+    width: 100%;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.paciente-input {
+    width: 100% !important;
+}
+
+form {
+    margin-left: 10px;
+    margin-right: 10px;
+}
